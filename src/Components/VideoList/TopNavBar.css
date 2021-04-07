@@ -1,0 +1,30 @@
+.navigation-bar {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: space-around;
+  background-color: #f5f5ff;
+  height: 80px;
+}
+
+.navigation-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: none;
+  justify-content: center;
+  align-items: center;
+}
+.navigation-list {
+  display: inline-block;
+  text-decoration: none;
+  padding: 1rem;
+}
+.navigation-list-link {
+  color: var(--darkred);
+  text-decoration: none;
+  padding: 1rem;
+}
+.navigation-list-link:hover {
+  font-weight: bold;
+  font-style: bold;
+}
