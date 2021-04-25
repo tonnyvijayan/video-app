@@ -3,6 +3,7 @@ import { useAuth } from "../Contexts/AuthProvider";
 
 export function PrivateRoute({ path, ...props }) {
   const { login } = useAuth();
+  console.log({ login });
   console.log({ path });
   return login ? (
     <Route path={path} {...props} />
