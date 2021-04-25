@@ -1,0 +1,10 @@
+.listing-area {
+  /* text-align: left; */
+  /* background-color: red; */
+  /* color: red; */
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 200px;
+  top: 80px;
+}
