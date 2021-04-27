@@ -6,6 +6,8 @@ export const SideNavBar = () => {
     <nav class="nav-site">
       <div class="nav-site-list">
         <span>Categories</span>
+        <Link to="/">Home</Link>
+
         <Link to="/investing">Investing</Link>
         <Link to="/trading">Trading</Link>
         <Link to="/options">Options</Link>
