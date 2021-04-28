@@ -8,5 +8,5 @@
   position: fixed;
   left: 200px;
   top: 80px;
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
 }
