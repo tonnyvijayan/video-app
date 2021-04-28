@@ -80,7 +80,6 @@ export function Login() {
     // </div>
 
     <div class="login-form">
-      <h1>Login</h1>
       <div class="container">
         <div class="content">
           <h2>log In</h2>

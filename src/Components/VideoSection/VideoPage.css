@@ -1,0 +1,113 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.video-page-video-section {
+  display: grid;
+  grid-template-columns: minmax(250px, 1fr);
+  /* gap: 3rem 1rem; */
+  padding: 3rem 1rem;
+  margin: 0 1.5rem;
+  /* height: 100vh; */
+  /* background-color: seagreen; */
+  overflow-y: scroll;
+}
+.video-page-video-container {
+  border: solid 1px #aaa;
+  box-shadow: 2px 2px 5px #aaa;
+  border-radius: 0.3rem;
+  display: flex;
+  flex-direction: column;
+  max-height: auto;
+  /* background-color: royalblue; */
+}
+.video-page-thumbnail {
+  display: flex;
+  /* flex-wrap: nowrap; */
+  /* max-width: 100%; */
+  /* width: 900px; */
+  /* height: 100%; */
+  /* flex-direction: column;  */
+  /* overflow: hidden;  */
+  /* background-color: brown; */
+}
+.react-youtube-player {
+  max-width: 100%;
+  max-height: 100%;
+}
+.video-page-label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.4rem;
+  font-size: 0.8rem;
+  border-radius: 0.3rem;
+  width: 40px;
+  height: 20px;
+  color: white;
+  background-color: black;
+}
+.video-page-card-label {
+  position: absolute;
+  top: -2rem;
+
+  right: -0.3rem;
+}
+.video-page-thumbnail-image {
+  width: 100%;
+  height: 100%;
+  min-width: 250px;
+  max-height: 200px;
+  /* background-color: brown; */
+}
+
+.video-page-video-bottom-section {
+  position: relative;
+  margin: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  /* align-items: flex-start; */
+}
+.video-page-channel-icon-image {
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  margin-right: 0.8rem;
+  background-color: brown;
+}
+.video-page-video-details {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  /* align-items: flex-start; */
+}
+.video-page-video-title {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-bottom: 0.3rem;
+}
+
+.video-page-channel-name {
+  color: #555;
+  margin-bottom: 0.1rem;
+}
+
+.video-page-video-view-data {
+  color: #555;
+}
+
+.bottom-section-icons {
+  align-self: flex-start;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.icon-links {
+  margin: 0.5rem;
+  cursor: pointer;
+}
