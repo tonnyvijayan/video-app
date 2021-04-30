@@ -2,10 +2,11 @@ import "./VideoPage.css";
 import { useParams } from "react-router-dom";
 import Youtube from "react-youtube";
 import { useVideoManagement } from "../../Contexts/VideoContextProvider";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, Navigate } from "react-router-dom";
 import PlayListadd from "./Assets/playlist_add.svg";
 import Like from "./Assets/thumb_up_off.svg";
 import { useState } from "react";
+import { useAuth } from "../../Contexts/AuthProvider";
 
 const opts = {
   height: "390",
@@ -17,9 +18,13 @@ const opts = {
 
 export const VideoPage = () => {
   const [show, setShow] = useState(false);
-  const { state, dispatch } = useVideoManagement();
+  const [playListName, setPlayListName] = useState("");
+  const { state, dispatch, serverOperations } = useVideoManagement();
+  const { login } = useAuth();
   const { videoId } = useParams();
   console.log({ videoId });
+  const navigate = useNavigate();
+  console.log("login on video page", login);
 
   const newVideo = state.videos.filter((item) => item._id === videoId);
 
@@ -63,7 +68,11 @@ export const VideoPage = () => {
                 <div class="bottom-section-icons">
                   <span
                     class="icon-links"
-                    onClick={() => setShow((prev) => true)}
+                    onClick={() => {
+                      return login === undefined || login === false
+                        ? navigate("/login")
+                        : setShow((prev) => true);
+                    }}
                   >
                     <img src={PlayListadd} alt="Playlist" />
                   </span>
@@ -92,17 +101,35 @@ export const VideoPage = () => {
             ipsam optio soluta.
           </p> */}
           <div>
-            <fieldset className="chekbox-container">
-              <input type="checkbox" name="playListCheckBox" />
-              <label htmlFor="playListCheckBox">PlayList1</label>
-            </fieldset>
+            {state?.currentUser?.playLists?.map((item) => {
+              return (
+                <fieldset className="chekbox-container">
+                  <input type="checkbox" name="playListCheckBox" />
+                  <label htmlFor="playListCheckBox">{item.name}</label>
+                </fieldset>
+              );
+            })}
 
             <input
               type="text"
               placeholder="Create PlayList"
               className="create-playList-input"
+              onChange={(event) => {
+                setPlayListName(event.target.value);
+              }}
             />
-            <button className="create-playList-button">+</button>
+            <button
+              className="create-playList-button"
+              onClick={() => {
+                serverOperations({
+                  type: "CREATE-NEW-PLAYLIST",
+                  payload: playListName,
+                });
+              }}
+              disabled={!playListName}
+            >
+              +
+            </button>
           </div>
           <button
             class="button-primary-one"

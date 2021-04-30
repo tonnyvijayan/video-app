@@ -1,5 +1,6 @@
 import { Route, Navigate } from "react-router-dom";
 import { useAuth } from "../Contexts/AuthProvider";
+import { useVideoManagement } from "../Contexts/VideoContextProvider";
 
 export function PrivateRoute({ path, ...props }) {
   const { login } = useAuth();

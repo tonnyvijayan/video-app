@@ -3,9 +3,11 @@ import { useAuth } from "../Contexts/AuthProvider";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useVideoManagement } from "../Contexts/VideoContextProvider";
 
 export function Login() {
   const { login, loginWithCredentials, setlogin } = useAuth();
+  const { dispatch } = useVideoManagement();
   const [loginEntries, setLoginEntries] = useState({
     userName: "",
     password: "",
@@ -23,19 +25,30 @@ export function Login() {
   const loginButtonHandler = async () => {
     try {
       const { userName, password } = loginEntries;
+      console.log({ userName });
+      console.log({ password });
+      console.log("enteredLoginbuttonHandler");
+
       const serverResponse = await axios.post(
-        `http://127.0.0.1:3010/users/${userName}`,
+        `http://127.0.0.1:3010/users/auth`,
         {
           name: userName,
           password: password,
         }
       );
+      dispatch({
+        type: "UPDATING-USER-DETAILS-FROM-SERVER",
+        payload: serverResponse.data.requestedUser,
+      });
 
       console.log({ serverResponse });
       setlogin(serverResponse?.data?.login);
       localStorage.setItem(
         "login",
-        JSON.stringify({ isLogin: serverResponse?.data?.login })
+        JSON.stringify({
+          isLogin: serverResponse?.data?.login,
+          currentUserId: serverResponse?.data?.requestedUser?._id,
+        })
       );
     } catch (error) {
       console.error(error);

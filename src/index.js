@@ -10,11 +10,11 @@ import { VideoContextProvider } from "./Contexts/VideoContextProvider";
 ReactDOM.render(
   <React.StrictMode>
     <Router>
-      <AuthProvider>
-        <VideoContextProvider>
+      <VideoContextProvider>
+        <AuthProvider>
           <App />
-        </VideoContextProvider>
-      </AuthProvider>
+        </AuthProvider>
+      </VideoContextProvider>
     </Router>
   </React.StrictMode>,
   document.getElementById("root")
