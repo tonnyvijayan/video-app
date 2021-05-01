@@ -26,6 +26,21 @@ export const VideoPage = () => {
   const navigate = useNavigate();
   console.log("login on video page", login);
 
+  const videosInPlayList = state?.currentUser?.playLists?.map((item) => item);
+  const filteredArray = videosInPlayList?.filter((item) => {
+    const filteringVIdeos = item.videos.filter(
+      (videoItem) => videoItem._id === videoId
+    );
+    console.log({ filteringVIdeos });
+    if (filteringVIdeos.length != 0) {
+      return item;
+    }
+  });
+
+  console.log({ videosInPlayList });
+  console.log({ filteredArray });
+  const videoInPlayList = filteredArray?.map((item) => item.name);
+  console.log({ videoInPlayList });
   const newVideo = state.videos.filter((item) => item._id === videoId);
 
   const id = state.videos
@@ -33,6 +48,21 @@ export const VideoPage = () => {
     .map((item) => item.videoId);
 
   const [requiredVideoId] = id;
+
+  const checkFieldHandler = (playListId, event) => {
+    console.log(playListId, event.target.checked);
+    if (event.target.checked === true) {
+      serverOperations({
+        type: "ADD-VIDEO-TO-PLAYLIST",
+        payload: { playListId, videoId },
+      });
+    } else if (event.target.checked === false) {
+      serverOperations({
+        type: "DELETE-VIDEO-FROM-PLAYLIST",
+        payload: { playListId, videoId },
+      });
+    }
+  };
 
   return (
     <div>
@@ -104,8 +134,28 @@ export const VideoPage = () => {
             {state?.currentUser?.playLists?.map((item) => {
               return (
                 <fieldset className="chekbox-container">
-                  <input type="checkbox" name="playListCheckBox" />
+                  <input
+                    type="checkbox"
+                    name="playListCheckBox"
+                    onClick={(event) => {
+                      checkFieldHandler(item._id, event);
+                    }}
+                    checked={videoInPlayList.includes(item.name) ? true : false}
+                    // {...(videoInPlayList.includes(item.name)
+                    //   ? { checked: "true" }
+                    //   : "")}
+                  />
                   <label htmlFor="playListCheckBox">{item.name}</label>
+                  <button
+                    onClick={() => {
+                      serverOperations({
+                        type: "DELETE-PLAYLISTS",
+                        payload: item._id,
+                      });
+                    }}
+                  >
+                    Remove
+                  </button>
                 </fieldset>
               );
             })}
@@ -114,6 +164,7 @@ export const VideoPage = () => {
               type="text"
               placeholder="Create PlayList"
               className="create-playList-input"
+              value={playListName}
               onChange={(event) => {
                 setPlayListName(event.target.value);
               }}
@@ -125,6 +176,7 @@ export const VideoPage = () => {
                   type: "CREATE-NEW-PLAYLIST",
                   payload: playListName,
                 });
+                setPlayListName("");
               }}
               disabled={!playListName}
             >

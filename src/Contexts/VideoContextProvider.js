@@ -40,6 +40,17 @@ export function VideoContextProvider({ children }) {
     });
   };
 
+  const updateLocalUserData = async () => {
+    const updatedUserData = await axios.get(
+      `http://127.0.0.1:3010/users/auth/${state.currentUser._id}`
+    );
+    dispatch({
+      type: "UPDATING-USER-DETAILS-FROM-SERVER",
+      payload: updatedUserData.data.user,
+    });
+    console.log({ updatedUserData });
+  };
+
   //   const operations = async ({action,payload}) => {
   //       switch (action) {
   //           case value:
@@ -73,6 +84,38 @@ export function VideoContextProvider({ children }) {
           { playListName: payload }
         );
         console.log({ createdPlayListServerResponse });
+        updateLocalUserData();
+        break;
+
+      case "DELETE-PLAYLISTS":
+        console.log("delete payload", payload);
+        const deletedPlayListResponse = await axios.delete(
+          `http://127.0.0.1:3010/playlists/delete/${state.currentUser._id}/${payload}`
+        );
+        console.log({ deletedPlayListResponse });
+        updateLocalUserData();
+        break;
+
+      case "ADD-VIDEO-TO-PLAYLIST":
+        // const { playListId, videoId } = payload;
+        const videoAddedToPlaylistResponse = await axios.post(
+          `http://127.0.0.1:3010/playlists/${state.currentUser._id}/${payload.playListId}`,
+          { videoId: payload.videoId }
+        );
+        console.log({ videoAddedToPlaylistResponse });
+        updateLocalUserData();
+
+        break;
+
+      case "DELETE-VIDEO-FROM-PLAYLIST":
+        console.log({ payload });
+        const videoDeletedFromPlaylistResponse = await axios.delete(
+          `http://127.0.0.1:3010/playlists/delete/${state.currentUser._id}/${payload.playListId}/${payload.videoId}`
+        );
+        console.log({ videoDeletedFromPlaylistResponse });
+        updateLocalUserData();
+
+        break;
 
       default:
         break;
