@@ -35,6 +35,7 @@ export const VideoHome = () => {
           </div>
         );
       })}
+      {/* // another section */}
     </div>
   );
 };

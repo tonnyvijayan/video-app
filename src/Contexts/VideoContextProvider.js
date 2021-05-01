@@ -116,6 +116,23 @@ export function VideoContextProvider({ children }) {
         updateLocalUserData();
 
         break;
+      case "ADD-T0-WATCH-LATER":
+        const addVideoToWatchLaterResponse = await axios.post(
+          `http://127.0.0.1:3010/users/likedvideos/${state.currentUser._id}`,
+          {
+            videoId: payload,
+          }
+        );
+        console.log({ addVideoToWatchLaterResponse });
+        updateLocalUserData();
+
+        break;
+      case "REMOVE-FROM-WATCH-LATER":
+        const removeFromWatchLaterResponse = await axios.delete(
+          `http://127.0.0.1:3010/users/likedvideos/${state.currentUser._id}/${payload}`
+        );
+        console.log({ removeFromWatchLaterResponse });
+        updateLocalUserData();
 
       default:
         break;

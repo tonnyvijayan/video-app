@@ -4,7 +4,10 @@ import Youtube from "react-youtube";
 import { useVideoManagement } from "../../Contexts/VideoContextProvider";
 import { Link, useNavigate, Navigate } from "react-router-dom";
 import PlayListadd from "./Assets/playlist_add.svg";
+import PlayListCheck from "./Assets/playlist_check.svg";
+import WatchLaterAdd from "./Assets/watch_later_not.svg";
 import Like from "./Assets/thumb_up_off.svg";
+import WatchLaterRemove from "./Assets/watch_later.svg";
 import { useState } from "react";
 import { useAuth } from "../../Contexts/AuthProvider";
 
@@ -40,6 +43,10 @@ export const VideoPage = () => {
   console.log({ videosInPlayList });
   console.log({ filteredArray });
   const videoInPlayList = filteredArray?.map((item) => item.name);
+  const videoInWatchLater = state?.currentUser?.likedVideos?.map(
+    (item) => item._id
+  );
+  console.log({ videoInWatchLater });
   console.log({ videoInPlayList });
   const newVideo = state.videos.filter((item) => item._id === videoId);
 
@@ -104,11 +111,37 @@ export const VideoPage = () => {
                         : setShow((prev) => true);
                     }}
                   >
-                    <img src={PlayListadd} alt="Playlist" />
+                    {videoInPlayList?.length !== 0 ? (
+                      <img src={PlayListCheck} alt="Playlist" />
+                    ) : (
+                      <img src={PlayListadd} alt="Playlist" />
+                    )}
                   </span>
-                  <span class="icon-links">
-                    <img src={Like} alt="like" />
-                  </span>
+                  {videoInWatchLater?.includes(videoId) ? (
+                    <span
+                      class="icon-links"
+                      onClick={() => {
+                        serverOperations({
+                          type: "REMOVE-FROM-WATCH-LATER",
+                          payload: videoId,
+                        });
+                      }}
+                    >
+                      <img src={WatchLaterRemove} alt="like" />
+                    </span>
+                  ) : (
+                    <span
+                      class="icon-links"
+                      onClick={() => {
+                        serverOperations({
+                          type: "ADD-T0-WATCH-LATER",
+                          payload: videoId,
+                        });
+                      }}
+                    >
+                      <img src={WatchLaterAdd} alt="like" />
+                    </span>
+                  )}
                 </div>
               </div>
             </div>
