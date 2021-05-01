@@ -4,9 +4,9 @@
   /* background-color: red; */
   /* color: red; */
   /* width: 100vw; */
-  /* height: 100%; */
+  height: 100%;
   position: fixed;
   left: 200px;
   top: 80px;
-  /* overflow-y: scroll; */
+  overflow-y: scroll;
 }
