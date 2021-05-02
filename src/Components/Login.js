@@ -1,6 +1,6 @@
 import "./Login.css";
 import { useAuth } from "../Contexts/AuthProvider";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useVideoManagement } from "../Contexts/VideoContextProvider";
@@ -124,7 +124,7 @@ export function Login() {
             )}
           </div>
           <p class="account">
-            Dont have an account?<a href="#">Register</a>
+            Dont have an account?<Link to="/signup">Register</Link>
           </p>
         </div>
       </div>

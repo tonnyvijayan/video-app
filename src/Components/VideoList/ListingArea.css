@@ -1,9 +1,11 @@
 .listing-area {
-  /* display: flex; */
   /* text-align: left; */
-  /* background-color: red; */
+
   /* color: red; */
   /* width: 100vw; */
+
+  /* only active */
+
   height: 100%;
   position: fixed;
   left: 200px;

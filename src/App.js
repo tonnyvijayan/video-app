@@ -1,4 +1,4 @@
-import "./App.css";
+// import "./App.css";
 import { SideNavBar } from "./Components/VideoList/SideNavBar";
 import { TopNavBar } from "./Components/VideoList/TopNavBar";
 import { Routes, Route } from "react-router-dom";
