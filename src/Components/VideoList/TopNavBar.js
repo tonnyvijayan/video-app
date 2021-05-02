@@ -1,38 +1,45 @@
 import "./TopNavBar.css";
-// import "../../App.css";
+import "../../App.css";
+import { Link } from "react-router-dom";
+import stock from "./Assets/stock.svg";
 
 export const TopNavBar = () => {
   return (
     <nav class="navigation-bar">
       <div class="navigation-container">
-        <span class="bold-text">Fin View</span>
+        {/* <span class="bold-text">
+          <img src={stock} alt="stock" />
+        </span> */}
+        <img src={stock} alt="stock" />
+        <strong>Fin View</strong>
       </div>
 
-      <div className="navigation-container">
+      {/* <div className="navigation-container">
         <input class="searchbar" type="text" placeholder="Search" />
-      </div>
+      </div> */}
       <div class="navigation-container">
         <ul>
           <li class="navigation-list">
-            <button class="badge-icon notification">
-              <img src="./assets/bell.svg" alt="bell" class="badge-image" />
-              <span class="button-badge-number">13</span>
-            </button>
+            <Link to="/login" class="navigation-buttons bg-cl-blue cl-white">
+              SignIn
+            </Link>
           </li>
 
           <li class="navigation-list">
-            <button class="badge-icon wishlist">
-              <img src="./assets/heart.svg" alt="heart" class="badge-image" />
-              <span class="button-badge-number">7</span>
-            </button>
+            <Link
+              to="/signup"
+              class="navigation-buttons bg-cl-white cl-blue border-blue"
+            >
+              SignUp
+            </Link>
           </li>
 
-          <li class="navigation-list">
+          {/* <li class="navigation-list">
             <button class="badge-icon cart">
               <img src="./assets/cart.svg" alt="cart" class="badge-image" />
               <span class="button-badge-number">3</span>
             </button>
-          </li>
+          </li> */}
         </ul>
       </div>
     </nav>

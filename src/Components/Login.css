@@ -4,14 +4,10 @@
   box-sizing: border-box;
 }
 
-body {
-  font-family: "Raleway";
-}
-
 .login-form {
   position: relative;
   min-height: 100vh;
-  width: 100vw;
+  /* width: 100vw; */
   background-color: #0568c1;
   padding: 40px;
   justify-content: center;

@@ -4,7 +4,8 @@
   box-sizing: border-box;
 }
 .playlist-videos {
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
+  overflow: hidden;
 }
 .playlist-video-section {
   display: grid;
@@ -15,7 +16,8 @@
   align-content: start;
   /* height: 100vh; */
   /* background-color: seagreen; */
-  overflow-y: scroll;
+  overflow: hidden;
+  /* overflow-y: scroll; */
   border-bottom: 3px solid #aaa;
 }
 .playlist-section-title {

@@ -1,5 +1,5 @@
 import "./ListingArea.css";
-// import "../../App.css";
+import "../../App.css";
 import { useState } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { PlayList } from "../PlayList/PlayList";
