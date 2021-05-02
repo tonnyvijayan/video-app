@@ -18,7 +18,7 @@ export const SideNavBar = () => {
         <span>Account</span>
         <Link to="/playlist">PlayList</Link>
         <Link to="/history">History</Link>
-        <Link to="/saved">Saved</Link>
+        <Link to="/watchlater">Watch Later</Link>
         <Link to="/login">Login</Link>
       </div>
     </nav>

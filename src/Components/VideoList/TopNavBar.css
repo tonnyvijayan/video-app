@@ -15,24 +15,19 @@
   flex-wrap: nowrap;
   justify-content: space-between;
   align-items: center;
+  max-width: 100%;
 }
 .navigation-list {
   display: inline-block;
   text-decoration: none;
   padding: 1rem;
-}
-.navigation-list-link {
-  color: var(--darkred);
-  text-decoration: none;
-  padding: 1rem;
-}
-.navigation-list-link:hover {
-  font-weight: bold;
-  font-style: bold;
+  max-width: 100%;
 }
 
 .navigation-buttons {
   /* display: inline-block; */
+  margin: 0.5rem;
+  max-width: 100%;
   text-decoration: none;
   /* width: 4rem; */
   padding: 0.7rem 1.5rem;

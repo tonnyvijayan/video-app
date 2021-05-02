@@ -18,29 +18,23 @@ export const TopNavBar = () => {
         <input class="searchbar" type="text" placeholder="Search" />
       </div> */}
       <div class="navigation-container">
-        <ul>
-          <li class="navigation-list">
-            <Link to="/login" class="navigation-buttons bg-cl-blue cl-white">
-              SignIn
-            </Link>
-          </li>
+        <Link to="/login" class="navigation-buttons bg-cl-blue cl-white">
+          SignIn
+        </Link>
 
-          <li class="navigation-list">
-            <Link
-              to="/signup"
-              class="navigation-buttons bg-cl-white cl-blue border-blue"
-            >
-              SignUp
-            </Link>
-          </li>
+        <Link
+          to="/signup"
+          class="navigation-buttons bg-cl-white cl-blue border-blue"
+        >
+          SignUp
+        </Link>
 
-          {/* <li class="navigation-list">
+        {/* <li class="navigation-list">
             <button class="badge-icon cart">
               <img src="./assets/cart.svg" alt="cart" class="badge-image" />
               <span class="button-badge-number">3</span>
             </button>
           </li> */}
-        </ul>
       </div>
     </nav>
   );

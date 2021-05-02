@@ -17,7 +17,7 @@ export function ListingArea() {
       <Routes>
         <PrivateRoute path="/playlist" element={<PlayList />} />
         <Route path="/" element={<VideoHome />} />
-        <Route path="/saved" element={<SavedList />} />
+        <Route path="/watchlater" element={<SavedList />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
 
