@@ -40,6 +40,7 @@ const reducer = (state, action) => {
 };
 
 export function VideoContextProvider({ children }) {
+  const [menuValue, setMenuValue] = useState(false);
   const navigate = useNavigate();
   const [toast, setToast] = useState("toastDiv");
   const [toastMessage, setToastMessaage] = useState("");
@@ -208,6 +209,8 @@ export function VideoContextProvider({ children }) {
         showToast,
         toast,
         toastMessage,
+        menuValue,
+        setMenuValue,
       }}
     >
       {children}

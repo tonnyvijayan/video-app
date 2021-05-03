@@ -1,10 +1,15 @@
 import "./SideNavBar.css";
 import "../../App.css";
 import { Link } from "react-router-dom";
+import { useVideoManagement } from "../../Contexts/VideoContextProvider";
 
 export const SideNavBar = () => {
+  const { menuValue } = useVideoManagement();
   return (
-    <nav class="nav-site">
+    <nav
+      class="nav-site"
+      style={menuValue ? { display: "flex" } : { display: "" }}
+    >
       <div class="nav-site-list">
         <span>Categories</span>
         <Link to="/">Home</Link>

@@ -2,8 +2,11 @@ import "./TopNavBar.css";
 import "../../App.css";
 import { Link } from "react-router-dom";
 import stock from "./Assets/stock.svg";
+import menu from "./Assets/menu.svg";
+import { useVideoManagement } from "../../Contexts/VideoContextProvider";
 
 export const TopNavBar = () => {
+  const { menuValue, setMenuValue } = useVideoManagement();
   return (
     <nav class="navigation-bar">
       <div class="navigation-container">
@@ -29,12 +32,14 @@ export const TopNavBar = () => {
           SignUp
         </Link>
 
-        {/* <li class="navigation-list">
-            <button class="badge-icon cart">
-              <img src="./assets/cart.svg" alt="cart" class="badge-image" />
-              <span class="button-badge-number">3</span>
-            </button>
-          </li> */}
+        <button
+          class="menu-button"
+          onClick={() => {
+            setMenuValue(!menuValue);
+          }}
+        >
+          <img src={menu} />
+        </button>
       </div>
     </nav>
   );
