@@ -1,5 +1,12 @@
 import axios from "axios";
-import { useReducer, useContext, createContext, useEffect } from "react";
+import {
+  useReducer,
+  useContext,
+  createContext,
+  useEffect,
+  useState,
+} from "react";
+import { useNavigate } from "react-router";
 
 const VideoContext = createContext();
 
@@ -27,6 +34,22 @@ const reducer = (state, action) => {
 };
 
 export function VideoContextProvider({ children }) {
+  const navigate = useNavigate();
+  const [toast, setToast] = useState("toastDiv");
+  const [toastMessage, setToastMessaage] = useState("");
+  function showToast(message, status) {
+    setToastMessaage(message);
+    if (status === true) {
+      setToast("showtoastDiv bg-light-green color-dark-green");
+    } else {
+      setToast("showtoastDiv bg-light-red color-dark-red");
+    }
+
+    setTimeout(() => {
+      setToast("toastDiv");
+    }, 4000);
+  }
+
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const videosUpdater = async () => {
@@ -68,6 +91,24 @@ export function VideoContextProvider({ children }) {
       //   const creatingPlaylistServerResponse = await axios.post("");
 
       //   break;
+      case "CREATE-NEW-USER":
+        try {
+          const createNewUserServerResponse = await axios.post(
+            "http://127.0.0.1:3010/users",
+            {
+              name: payload.username,
+              password: payload.password,
+            }
+          );
+          console.log({ createNewUserServerResponse });
+          showToast("User Created", true);
+          navigate("/login");
+        } catch (error) {
+          console.error(error);
+          showToast("Failed to Create", false);
+        }
+
+        break;
       case "UPDATE-CURRENT-USER-DATA":
         const currentUser = await axios.get(
           `http://127.0.0.1:3010/users/auth/${payload}`
@@ -85,6 +126,8 @@ export function VideoContextProvider({ children }) {
         );
         console.log({ createdPlayListServerResponse });
         updateLocalUserData();
+        showToast("Created New PlayList", true);
+
         break;
 
       case "DELETE-PLAYLISTS":
@@ -94,6 +137,8 @@ export function VideoContextProvider({ children }) {
         );
         console.log({ deletedPlayListResponse });
         updateLocalUserData();
+        showToast("Deleted PlayList", true);
+
         break;
 
       case "ADD-VIDEO-TO-PLAYLIST":
@@ -104,6 +149,7 @@ export function VideoContextProvider({ children }) {
         );
         console.log({ videoAddedToPlaylistResponse });
         updateLocalUserData();
+        showToast("Added To PlayList", true);
 
         break;
 
@@ -114,6 +160,7 @@ export function VideoContextProvider({ children }) {
         );
         console.log({ videoDeletedFromPlaylistResponse });
         updateLocalUserData();
+        showToast("Removed From PlayList", true);
 
         break;
       case "ADD-T0-WATCH-LATER":
@@ -125,6 +172,7 @@ export function VideoContextProvider({ children }) {
         );
         console.log({ addVideoToWatchLaterResponse });
         updateLocalUserData();
+        showToast("Added to Watch Later", true);
 
         break;
       case "REMOVE-FROM-WATCH-LATER":
@@ -133,6 +181,7 @@ export function VideoContextProvider({ children }) {
         );
         console.log({ removeFromWatchLaterResponse });
         updateLocalUserData();
+        showToast("Removed From Watch Later", true);
 
       default:
         break;
@@ -145,7 +194,16 @@ export function VideoContextProvider({ children }) {
   }, []);
 
   return (
-    <VideoContext.Provider value={{ state, dispatch, serverOperations }}>
+    <VideoContext.Provider
+      value={{
+        state,
+        dispatch,
+        serverOperations,
+        showToast,
+        toast,
+        toastMessage,
+      }}
+    >
       {children}
     </VideoContext.Provider>
   );

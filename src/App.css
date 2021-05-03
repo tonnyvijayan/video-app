@@ -1,6 +1,24 @@
 /* @import url("https://zeenui-dev.netlify.app/styles.css"); */
 @import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap");
 
+:root {
+  --primary-color: #6d28d9;
+  --secondary-color: #c4b5fd;
+  --grey: #aaa;
+  --white: #fff;
+  --lightgreen: #a7f3d0;
+  --darkgreen: #047857;
+  --lightyellow: #fde68a;
+  --darkyellow: #b45309;
+  --lightred: #fecaca;
+  --darkred: #b91c1c;
+  --lightblue: #bfdbfe;
+  --darkblue: #1d4ed8;
+  --facebook: #3b5998;
+  --twitter: #3cf;
+  --linkedin: #0072b1;
+}
+
 .App {
   font-family: "Ubuntu", sans-serif;
   /* text-align: center; */
@@ -92,12 +110,12 @@
   box-shadow: 0px 0px 4px var(--grey);
 }
 
-#toastDiv {
+.toastDiv {
   padding: 1rem 2rem;
   display: none;
-  background-color: green;
-  color: blue;
-  border: 1px solid red;
+  /* background-color: var(--lightgreen);
+  color: var(--darkgreen); */
+  /* border: 1px solid red; */
   height: 30px;
   border-radius: 5px;
   text-align: center;
@@ -107,12 +125,11 @@
   right: 2%;
 }
 
-#showtoastDiv {
+.showtoastDiv {
   padding: 1rem 2rem;
   display: block;
-  background-color: green;
-  color: blue;
-  border: 1px solid red;
+  /* background-color: var(--lightgreen);
+  color: var(--darkgreen); */
   height: 50px;
   border-radius: 5px;
   text-align: center;
@@ -120,4 +137,18 @@
   position: fixed;
   bottom: 2%;
   right: 2%;
+}
+
+.bg-light-red {
+  background-color: var(--lightred);
+}
+.color-dark-red {
+  color: var(--darkred);
+}
+
+.bg-light-green {
+  background-color: var(--lightgreen);
+}
+.color-dark-green {
+  color: var(--darkgreen);
 }

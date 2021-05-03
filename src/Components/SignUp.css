@@ -5,11 +5,12 @@
   /* max-width: 100%; */
   /* margin: 2rem; */
   /* padding: 2rem; */
-  background-color: blueviolet;
+  background-color: #0568c1;
 }
 .register-form {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   background-color: white;
   border: 1px solid #ccc;
   /* max-width: 100%; */
