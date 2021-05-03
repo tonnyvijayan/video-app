@@ -158,12 +158,6 @@ export const VideoPage = () => {
       >
         <div class="modal">
           <h2>PlayList</h2>
-          {/* <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat
-            odit corporis minima quibusdam odio est voluptatem sapiente nisi
-            itaque doloribus voluptas a quae, fugiat temporibus aperiam. Ea
-            ipsam optio soluta.
-          </p> */}
           <div>
             {state?.currentUser?.playLists?.map((item) => {
               return (
@@ -181,6 +175,7 @@ export const VideoPage = () => {
                   />
                   <label htmlFor="playListCheckBox">{item.name}</label>
                   <button
+                    class="playlist-remove-button"
                     onClick={() => {
                       serverOperations({
                         type: "DELETE-PLAYLISTS",
@@ -196,7 +191,7 @@ export const VideoPage = () => {
 
             <input
               type="text"
-              placeholder="Create PlayList"
+              placeholder="Create New PlayList"
               className="create-playList-input"
               value={playListName}
               onChange={(event) => {
@@ -218,7 +213,7 @@ export const VideoPage = () => {
             </button>
           </div>
           <button
-            class="button-primary-one"
+            class="playlist-close-button"
             id="close-modal"
             onClick={() => setShow((prev) => false)}
           >
