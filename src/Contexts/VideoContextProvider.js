@@ -24,9 +24,15 @@ const reducer = (state, action) => {
   switch (action.type) {
     case "UPDATE-LOCAL-VIDEOS":
       return { ...state, videos: action.payload };
+      break;
 
     case "UPDATING-USER-DETAILS-FROM-SERVER":
       return { ...state, currentUser: action.payload };
+      break;
+
+    case "CLEAR-USER-DATA":
+      return { ...state, currentUser: {} };
+      break;
 
     default:
       break;

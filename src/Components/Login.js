@@ -60,6 +60,9 @@ export function Login() {
   const logoutButtonHandler = () => {
     setlogin(false);
     localStorage.removeItem("login");
+    dispatch({
+      type: "CLEAR-USER-DATA",
+    });
     navigate("/");
   };
 

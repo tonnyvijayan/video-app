@@ -111,10 +111,11 @@ export const VideoPage = () => {
                         : setShow((prev) => true);
                     }}
                   >
-                    {videoInPlayList?.length !== 0 ? (
-                      <img src={PlayListCheck} alt="Playlist" />
-                    ) : (
+                    {videoInPlayList?.length < 1 ||
+                    videoInPlayList === undefined ? (
                       <img src={PlayListadd} alt="Playlist" />
+                    ) : (
+                      <img src={PlayListCheck} alt="Playlist" />
                     )}
                   </span>
                   {videoInWatchLater?.includes(videoId) ? (

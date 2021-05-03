@@ -6,7 +6,7 @@ export const VideoHome = () => {
   const { state, dispatch } = useVideoManagement();
   return (
     <div class="video-section">
-      {state.videos.map((item) => {
+      {state?.videos?.map((item) => {
         return (
           <div class="video-container">
             <Link to={`/videos/${item._id}`} class="thumbnail">
