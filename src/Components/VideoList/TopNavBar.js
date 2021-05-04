@@ -30,6 +30,8 @@ export const TopNavBar = () => {
           <img src={stock} alt="stock" />
           <strong>FinView</strong>
         </Link>
+        {/* <img src={stock} alt="stock" />
+        <strong>Fin View</strong> */}
       </div>
 
       {/* <div className="navigation-container">
