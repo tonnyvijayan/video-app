@@ -52,12 +52,11 @@
 .cl-white {
   color: #fff;
 }
-/* .border-blue {
-  border: 2px solid #1d4ed8;
-} */
 
 @media screen and (max-width: 768px) {
   .menu-button {
     display: flex;
+    border: 1px solid #aaa;
+    box-shadow: 2px 2px 6px grey;
   }
 }

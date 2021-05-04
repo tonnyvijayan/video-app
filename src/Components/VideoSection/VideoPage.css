@@ -162,6 +162,7 @@
 .create-playList-button {
   padding: 0.4rem;
   font-weight: bold;
+  cursor: pointer;
 }
 .chekbox-container {
   display: flex;
@@ -183,11 +184,13 @@
   font-weight: bold;
   border: 1px solid var(--darkblue);
   border-radius: 10px;
+  cursor: pointer;
 }
 .playlist-close-button {
   margin-top: 10px;
   background-color: var(--darkblue);
   color: #fff;
   padding: 0.5rem 1rem;
+  cursor: pointer;
   /* border */
 }
