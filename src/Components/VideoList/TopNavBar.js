@@ -26,8 +26,10 @@ export const TopNavBar = () => {
         {/* <span class="bold-text">
           <img src={stock} alt="stock" />
         </span> */}
-        <img src={stock} alt="stock" />
-        <strong>Fin View</strong>
+        <Link to="/" class="brand-link">
+          <img src={stock} alt="stock" />
+          <strong>FinView</strong>
+        </Link>
       </div>
 
       {/* <div className="navigation-container">

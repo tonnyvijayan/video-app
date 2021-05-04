@@ -52,7 +52,9 @@
 .cl-white {
   color: #fff;
 }
-
+.brand-link {
+  text-decoration: none;
+}
 @media screen and (max-width: 768px) {
   .menu-button {
     display: flex;
