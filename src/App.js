@@ -7,23 +7,15 @@ import { useState } from "react";
 import { useVideoManagement } from "./Contexts/VideoContextProvider";
 
 function App() {
-  // const toast = document.getElementById("toastDiv");
   const { toast, toastMessage } = useVideoManagement();
 
   return (
     <div className="App">
-      {/* <button onClick={showToast} class="toast-button">
-        Show toast
-      </button> */}
       <div className={toast}>{toastMessage}</div>
-      {/* <Routes>
-        <Route path="/" element={<TopNavBar />} />
-        <Route path="/" element={<SideNavBar />} />
-      </Routes> */}
+
       <TopNavBar />
       <SideNavBar />
       <ListingArea />
-      {/* {JSON.stringify(toast)} */}
     </div>
   );
 }

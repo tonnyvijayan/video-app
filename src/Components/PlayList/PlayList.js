@@ -5,19 +5,6 @@ import { Link } from "react-router-dom";
 export function PlayList() {
   const { state } = useVideoManagement();
   return (
-    // <div>
-    //   {state?.currentUser?.playLists?.map((item) => {
-    //     return (
-    //       <div>
-    //         <h2>{item.name}</h2>
-    //         {item?.videos?.map((videoItem) => {
-    //           return <h2>{videoItem._id}</h2>;
-    //         })}
-    //       </div>
-    //     );
-    //   })}
-    // </div>
-
     <div class="playlist-videos">
       {state?.currentUser?.playLists?.map((item) => {
         return (
@@ -71,10 +58,5 @@ export function PlayList() {
         );
       })}
     </div>
-
-    // <div>
-    //   This is PlayList Window
-    //   <div>{JSON.stringify(state.currentUser)}</div>
-    // </div>
   );
 }

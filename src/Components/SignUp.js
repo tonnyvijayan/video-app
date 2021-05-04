@@ -93,7 +93,6 @@ export const SignUp = () => {
           </button>
         </div>
       </div>
-      {JSON.stringify(userDetails)}
     </div>
   );
 };

@@ -61,7 +61,7 @@ export function VideoContextProvider({ children }) {
 
   const videosUpdater = async () => {
     const serverVideosResponse = await axios.get(
-      "http://127.0.0.1:3010/videos"
+      "https://stark-wave-55031.herokuapp.com/videos"
     );
     console.log({ serverVideosResponse });
     dispatch({
@@ -72,7 +72,7 @@ export function VideoContextProvider({ children }) {
 
   const updateLocalUserData = async () => {
     const updatedUserData = await axios.get(
-      `http://127.0.0.1:3010/users/auth/${state.currentUser._id}`
+      `https://stark-wave-55031.herokuapp.com/users/auth/${state.currentUser._id}`
     );
     dispatch({
       type: "UPDATING-USER-DETAILS-FROM-SERVER",
@@ -81,27 +81,12 @@ export function VideoContextProvider({ children }) {
     console.log({ updatedUserData });
   };
 
-  //   const operations = async ({action,payload}) => {
-  //       switch (action) {
-  //           case value:
-
-  //               break;
-
-  //           default:
-  //               break;
-  //       }
-  //   };
-
   const serverOperations = async ({ type, payload }) => {
     switch (type) {
-      // case "CREATING-PLAYLIST-ON-DB":
-      //   const creatingPlaylistServerResponse = await axios.post("");
-
-      //   break;
       case "CREATE-NEW-USER":
         try {
           const createNewUserServerResponse = await axios.post(
-            "http://127.0.0.1:3010/users",
+            "https://stark-wave-55031.herokuapp.com/users",
             {
               name: payload.username,
               password: payload.password,
@@ -118,7 +103,7 @@ export function VideoContextProvider({ children }) {
         break;
       case "UPDATE-CURRENT-USER-DATA":
         const currentUser = await axios.get(
-          `http://127.0.0.1:3010/users/auth/${payload}`
+          `https://stark-wave-55031.herokuapp.com/users/auth/${payload}`
         );
         dispatch({
           type: "UPDATING-USER-DETAILS-FROM-SERVER",
@@ -128,7 +113,7 @@ export function VideoContextProvider({ children }) {
 
       case "CREATE-NEW-PLAYLIST":
         const createdPlayListServerResponse = await axios.post(
-          `http://127.0.0.1:3010/playlists/${state.currentUser._id}`,
+          `https://stark-wave-55031.herokuapp.com/playlists/${state.currentUser._id}`,
           { playListName: payload }
         );
         console.log({ createdPlayListServerResponse });
@@ -140,7 +125,7 @@ export function VideoContextProvider({ children }) {
       case "DELETE-PLAYLISTS":
         console.log("delete payload", payload);
         const deletedPlayListResponse = await axios.delete(
-          `http://127.0.0.1:3010/playlists/delete/${state.currentUser._id}/${payload}`
+          `https://stark-wave-55031.herokuapp.com/playlists/delete/${state.currentUser._id}/${payload}`
         );
         console.log({ deletedPlayListResponse });
         updateLocalUserData();
@@ -151,7 +136,7 @@ export function VideoContextProvider({ children }) {
       case "ADD-VIDEO-TO-PLAYLIST":
         // const { playListId, videoId } = payload;
         const videoAddedToPlaylistResponse = await axios.post(
-          `http://127.0.0.1:3010/playlists/${state.currentUser._id}/${payload.playListId}`,
+          `https://stark-wave-55031.herokuapp.com/playlists/${state.currentUser._id}/${payload.playListId}`,
           { videoId: payload.videoId }
         );
         console.log({ videoAddedToPlaylistResponse });
@@ -163,7 +148,7 @@ export function VideoContextProvider({ children }) {
       case "DELETE-VIDEO-FROM-PLAYLIST":
         console.log({ payload });
         const videoDeletedFromPlaylistResponse = await axios.delete(
-          `http://127.0.0.1:3010/playlists/delete/${state.currentUser._id}/${payload.playListId}/${payload.videoId}`
+          `https://stark-wave-55031.herokuapp.com/playlists/delete/${state.currentUser._id}/${payload.playListId}/${payload.videoId}`
         );
         console.log({ videoDeletedFromPlaylistResponse });
         updateLocalUserData();
@@ -171,8 +156,9 @@ export function VideoContextProvider({ children }) {
 
         break;
       case "ADD-T0-WATCH-LATER":
+        console.log("add to watch later");
         const addVideoToWatchLaterResponse = await axios.post(
-          `http://127.0.0.1:3010/users/likedvideos/${state.currentUser._id}`,
+          `https://stark-wave-55031.herokuapp.com/users/likedvideos/${state.currentUser._id}`,
           {
             videoId: payload,
           }
@@ -184,7 +170,7 @@ export function VideoContextProvider({ children }) {
         break;
       case "REMOVE-FROM-WATCH-LATER":
         const removeFromWatchLaterResponse = await axios.delete(
-          `http://127.0.0.1:3010/users/likedvideos/${state.currentUser._id}/${payload}`
+          `https://stark-wave-55031.herokuapp.com/users/likedvideos/${state.currentUser._id}/${payload}`
         );
         console.log({ removeFromWatchLaterResponse });
         updateLocalUserData();
