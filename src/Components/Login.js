@@ -69,70 +69,6 @@ export function Login() {
   console.log({ state });
 
   return (
-    // <div>
-    //   <p>{login ? "You're logged in" : "You need to login to go further"}</p>
-    //   <input
-    //     type="text"
-    //     placeholder="username"
-    //     name="userName"
-    //     onChange={loginChangeHandler}
-    //   />
-    //   <br />
-
-    //   <input
-    //     type="password"
-    //     placeholder="password"
-    //     name="password"
-    //     onChange={loginChangeHandler}
-    //   />
-    //   <br />
-
-    //   {login ? (
-    //     <button onClick={logoutButtonHandler}>Logout</button>
-    //   ) : (
-    //     <button onClick={loginButtonHandler}>Login</button>
-    //   )}
-    //   {JSON.stringify(loginEntries)}
-    // </div>
-
-    // <div class="login-form">
-    //   <div class="container">
-    //     <div class="content">
-    //       <h2>log In</h2>
-    //       <div class="form-div">
-    //         <input
-    //           type="text"
-    //           placeholder="User Name"
-    //           name="userName"
-    //           onChange={loginChangeHandler}
-    //         />
-    //         <input
-    //           type="password"
-    //           placeholder="User Password"
-    //           name="password"
-    //           onChange={loginChangeHandler}
-    //         />
-    //         {/* <button class="btn" type="submit">
-    //           Log In
-    //         </button> */}
-
-    //         {login ? (
-    //           <button onClick={logoutButtonHandler} class="btn">
-    //             Logout
-    //           </button>
-    //         ) : (
-    //           <button onClick={loginButtonHandler} class="btn">
-    //             Login
-    //           </button>
-    //         )}
-    //       </div>
-    //       <p class="account">
-    //         Dont have an account?<Link to="/signup">Register</Link>
-    //       </p>
-    //     </div>
-    //   </div>
-    // </div>
-
     <div class="login-form">
       <div class="login-container">
         <div class="login-content">
@@ -152,9 +88,6 @@ export function Login() {
               onChange={loginChangeHandler}
               className="wd-100"
             />
-            {/* <button class="btn" type="submit">
-        Log In
-      </button> */}
 
             {login ? (
               <button onClick={logoutButtonHandler} class="btn">
