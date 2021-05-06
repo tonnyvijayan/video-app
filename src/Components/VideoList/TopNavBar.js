@@ -21,8 +21,8 @@ export const TopNavBar = () => {
     navigate("/");
   };
   return (
-    <nav class="navigation-bar">
-      <div class="navigation-container">
+    <nav class="finview-navigation-bar">
+      <div class="finview-navigation-container">
         {/* <span class="bold-text">
           <img src={stock} alt="stock" />
         </span> */}
@@ -34,10 +34,10 @@ export const TopNavBar = () => {
         <strong>Fin View</strong> */}
       </div>
 
-      {/* <div className="navigation-container">
+      {/* <div className="finview-navigation-container">
         <input class="searchbar" type="text" placeholder="Search" />
       </div> */}
-      <div class="navigation-container">
+      <div class="finview-navigation-container">
         {login ? (
           <button
             class="navigation-buttons bg-cl-blue cl-white"
@@ -51,10 +51,7 @@ export const TopNavBar = () => {
           </Link>
         )}
 
-        <Link
-          to="/signup"
-          class="navigation-buttons bg-cl-white cl-blue border-blue"
-        >
+        <Link to="/signup" class="navigation-buttons bg-cl-white cl-blue ">
           SignUp
         </Link>
 

@@ -13,7 +13,9 @@ export const VideoHome = () => {
               <img class="thumbnail-image" src={item.thumbnail} alt="" />
             </Link>
             <div class="video-bottom-section">
-              <span class="label card-label">{item.duration}</span>
+              <span class="finview-label finview-card-label">
+                {item.duration}
+              </span>
 
               <a href="#" class="channel-icon">
                 <img

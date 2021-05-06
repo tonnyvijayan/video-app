@@ -11,7 +11,16 @@ function App() {
 
   return (
     <div className="App">
-      <div className={toast}>{toastMessage}</div>
+      <div
+        id="toastDiv"
+        style={{
+          display: toast,
+
+          alignItems: "center",
+        }}
+      >
+        {toastMessage}
+      </div>
 
       <TopNavBar />
       <SideNavBar />

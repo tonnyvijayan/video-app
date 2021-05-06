@@ -7,10 +7,10 @@ export const SideNavBar = () => {
   const { menuValue } = useVideoManagement();
   return (
     <nav
-      class="nav-site"
+      class="finview-nav-site"
       style={menuValue ? { display: "flex" } : { display: "" }}
     >
-      <div class="nav-site-list">
+      <div class="finview-nav-site-list">
         <span>Categories</span>
         <Link to="/">Home</Link>
 
@@ -19,7 +19,7 @@ export const SideNavBar = () => {
         <Link to="/options">Options</Link>
         <Link to="/economy">Economy</Link>
       </div>
-      <div class="nav-site-list">
+      <div class="finview-nav-site-list">
         <span>Account</span>
         <Link to="/playlist">PlayList</Link>
         <Link to="/history">History</Link>

@@ -42,18 +42,27 @@ const reducer = (state, action) => {
 export function VideoContextProvider({ children }) {
   const [menuValue, setMenuValue] = useState(false);
   const navigate = useNavigate();
-  const [toast, setToast] = useState("toastDiv");
+  // const [toast, setToast] = useState("toastDiv");
+
+  const [toast, setToast] = useState("none");
   const [toastMessage, setToastMessaage] = useState("");
   function showToast(message, status) {
     setToastMessaage(message);
-    if (status === true) {
-      setToast("showtoastDiv bg-light-green color-dark-green");
-    } else {
-      setToast("showtoastDiv bg-light-red color-dark-red");
-    }
+    // if (status === true) {
+    //   setToast("showtoastDiv bg-light-green color-dark-green");
+    // } else {
+    //   setToast("showtoastDiv bg-light-red color-dark-red");
+    // }
 
+    if (status === true) {
+      setToast("flex");
+    }
+    //  else {
+    //   setToast("showtoastDiv bg-light-red color-dark-red");
+    // }
     setTimeout(() => {
-      setToast("toastDiv");
+      // setToast("toastDiv");
+      setToast("none");
     }, 4000);
   }
 

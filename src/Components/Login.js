@@ -95,9 +95,47 @@ export function Login() {
     //   {JSON.stringify(loginEntries)}
     // </div>
 
+    // <div class="login-form">
+    //   <div class="container">
+    //     <div class="content">
+    //       <h2>log In</h2>
+    //       <div class="form-div">
+    //         <input
+    //           type="text"
+    //           placeholder="User Name"
+    //           name="userName"
+    //           onChange={loginChangeHandler}
+    //         />
+    //         <input
+    //           type="password"
+    //           placeholder="User Password"
+    //           name="password"
+    //           onChange={loginChangeHandler}
+    //         />
+    //         {/* <button class="btn" type="submit">
+    //           Log In
+    //         </button> */}
+
+    //         {login ? (
+    //           <button onClick={logoutButtonHandler} class="btn">
+    //             Logout
+    //           </button>
+    //         ) : (
+    //           <button onClick={loginButtonHandler} class="btn">
+    //             Login
+    //           </button>
+    //         )}
+    //       </div>
+    //       <p class="account">
+    //         Dont have an account?<Link to="/signup">Register</Link>
+    //       </p>
+    //     </div>
+    //   </div>
+    // </div>
+
     <div class="login-form">
-      <div class="container">
-        <div class="content">
+      <div class="login-container">
+        <div class="login-content">
           <h2>log In</h2>
           <div class="form-div">
             <input
@@ -105,16 +143,18 @@ export function Login() {
               placeholder="User Name"
               name="userName"
               onChange={loginChangeHandler}
+              className="wd-100"
             />
             <input
               type="password"
               placeholder="User Password"
               name="password"
               onChange={loginChangeHandler}
+              className="wd-100"
             />
             {/* <button class="btn" type="submit">
-              Log In
-            </button> */}
+        Log In
+      </button> */}
 
             {login ? (
               <button onClick={logoutButtonHandler} class="btn">

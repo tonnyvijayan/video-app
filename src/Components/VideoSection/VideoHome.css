@@ -28,7 +28,7 @@
   /* overflow: hidden; */
   /* background-color: brown; */
 }
-.label {
+.finview-label {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -40,7 +40,7 @@
   color: white;
   background-color: black;
 }
-.card-label {
+.finview-card-label {
   position: absolute;
   top: -2rem;
 
