@@ -1,38 +1,68 @@
 import "./TopNavBar.css";
+import "../../App.css";
+import { Link } from "react-router-dom";
+import stock from "./Assets/stock.svg";
+import menu from "./Assets/menu.svg";
+import { useVideoManagement } from "../../Contexts/VideoContextProvider";
+import { useAuth } from "../../Contexts/AuthProvider";
+import { useNavigate } from "react-router-dom";
 
 export const TopNavBar = () => {
+  const navigate = useNavigate();
+  const { menuValue, setMenuValue, dispatch } = useVideoManagement();
+  const { login, setlogin } = useAuth();
+
+  const logoutButtonHandler = () => {
+    setlogin(false);
+    localStorage.removeItem("login");
+    dispatch({
+      type: "CLEAR-USER-DATA",
+    });
+    navigate("/");
+  };
   return (
-    <nav class="navigation-bar">
-      <div class="navigation-container">
-        <span class="bold-text">Fin View</span>
+    <nav class="finview-navigation-bar">
+      <div class="finview-navigation-container">
+        {/* <span class="bold-text">
+          <img src={stock} alt="stock" />
+        </span> */}
+        <Link to="/" class="brand-link">
+          <img src={stock} alt="stock" />
+          <strong>FinView</strong>
+        </Link>
+        {/* <img src={stock} alt="stock" />
+        <strong>Fin View</strong> */}
       </div>
 
-      <div className="navigation-container">
+      {/* <div className="finview-navigation-container">
         <input class="searchbar" type="text" placeholder="Search" />
-      </div>
-      <div class="navigation-container">
-        <ul>
-          <li class="navigation-list">
-            <button class="badge-icon notification">
-              <img src="./assets/bell.svg" alt="bell" class="badge-image" />
-              <span class="button-badge-number">13</span>
-            </button>
-          </li>
+      </div> */}
+      <div class="finview-navigation-container">
+        {login ? (
+          <button
+            class="navigation-buttons bg-cl-blue cl-white"
+            onClick={logoutButtonHandler}
+          >
+            Logout
+          </button>
+        ) : (
+          <Link to="/login" class="navigation-buttons bg-cl-blue cl-white">
+            SignIn
+          </Link>
+        )}
 
-          <li class="navigation-list">
-            <button class="badge-icon wishlist">
-              <img src="./assets/heart.svg" alt="heart" class="badge-image" />
-              <span class="button-badge-number">7</span>
-            </button>
-          </li>
+        <Link to="/signup" class="navigation-buttons bg-cl-white cl-blue ">
+          SignUp
+        </Link>
 
-          <li class="navigation-list">
-            <button class="badge-icon cart">
-              <img src="./assets/cart.svg" alt="cart" class="badge-image" />
-              <span class="button-badge-number">3</span>
-            </button>
-          </li>
-        </ul>
+        <button
+          class="menu-button"
+          onClick={() => {
+            setMenuValue(!menuValue);
+          }}
+        >
+          <img src={menu} />
+        </button>
       </div>
     </nav>
   );
